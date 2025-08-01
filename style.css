@@ -1,0 +1,240 @@
+/* === ESTILOS BASE === */
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #001f3f; /* azul oscuro de la tarjeta */
+  background-image: url("fotos/fresa-fondo.png"), url("fotos/fresa-fondo.png");
+  background-repeat: no-repeat, no-repeat;
+  background-position: left top, right top;
+  background-size: 150px auto, 150px auto;
+  color: white;
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  padding: 2rem;
+  background-color: #ff0000; /* rojo fuerte */
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  border-bottom: 5px solid #ffff00; /* borde amarillo */
+}
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #adff2f; /* verde lima */
+}
+
+header p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+section {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #ffff00; /* amarillo */
+  margin-bottom: 1.5rem;
+}
+
+.qr-section img {
+  display: block;
+  margin: auto;
+  max-width: 250px;
+  border: 5px solid #adff2f;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn {
+  background-color: #ffff00;
+  color: #001f3f;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.btn:hover {
+  background-color: #ff0000;
+  color: white;
+  transform: scale(1.05);
+}
+
+.imagenes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.imagenes img {
+  width: 100%;
+  border-radius: 20px;
+  border: 4px solid #adff2f;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+
+.imagenes img:hover {
+  transform: scale(1.05);
+}
+
+footer {
+  text-align: center;
+  background-color: #ff0000;
+  color: white;
+  padding: 1rem;
+  border-top: 5px solid #ffff00;
+  font-weight: bold;
+}
+
+/* WhatsApp floating button */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  z-index: 1000;
+  transition: transform 0.3s;
+}
+
+.floating-whatsapp:hover {
+  transform: scale(1.1);
+}
+
+/* Testimonios */
+.testimonios {
+  background-color: rgba(255,255,255,0.07);
+  border-left: 5px solid #adff2f;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  font-style: italic;
+  color: white;
+  margin-top: 2rem;
+}
+
+.testimonios p {
+  margin-bottom: 1rem;
+}
+
+/* Formulario */
+.formulario {
+  margin-top: 2rem;
+  background-color: rgba(255,255,255,0.07);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.formulario input,
+.formulario textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.formulario button {
+  background-color: #adff2f;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #001f3f;
+  transition: all 0.3s ease;
+}
+
+.formulario button:hover {
+  background-color: #ff0000;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* ------------------ ESTILO FONDO FRESAS ------------------ */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 150px;
+  background: url('fotos/fresitas.jpeg') repeat-y center;
+  background: url('fotos/fresitas.jpeg') repeat-y right;
+  background-size: cover;
+  opacity: 0.25;
+  z-index: 0;
+}
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Fresa decorativa en el lado derecho */
+body::before {
+  content: "";
+  position: fixed; /* Fijo para que no se mueva al hacer scroll */
+  top: 0;
+  right: 0;
+  width: 150px; /* Ajusta según el ancho de la imagen */
+  height: 100vh;
+  background: url('fotos/fresitas.jpeg') repeat-y right center;
+  background-size: cover; /* O 'contain' si quieres que no se corte */
+  z-index: 0;
+  opacity: 0.2; /* Ajusta según qué tan visible la quieres */
+  pointer-events: none; /* Para que no interfiera con los clics */
+}
+
+/* Asegúrate de que todo el contenido esté por encima */
+main, header, footer, section {
+  position: relative;
+  z-index: 1;
+}
+.imagenes img {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}

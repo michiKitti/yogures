@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para ti...</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #f5d9ff 0%, #c9e4ff 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+            color: #4a2c6d;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            animation: fadeIn 2s;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+        h1 {
+            color: #8e44ad;
+            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: normal;
+            font-style: italic;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        button {
+            background: linear-gradient(135deg, #9b59b6 0%, #e74c3c 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        .hidden {
+            display: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hearts {
+            position: absolute;
+            font-size: 24px;
+            color: #e74c3c;
+            animation: float 5s ease-in-out infinite;
+            opacity: 0.7;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        .stars {
+            position: absolute;
+            font-size: 16px;
+            color: #f1c40f;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        .back-btn {
+            background: transparent !important;
+            color: #8e44ad !important;
+            border: 1px solid #8e44ad !important;
+            padding: 8px 15px !important;
+            margin-top: 20px !important;
+        }
+        .back-btn:hover {
+            background: rgba(142, 68, 173, 0.1) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Pantalla 1 - Mensaje Inicial -->
+    <div class="container" id="main-message">
+        <h1>💌 Para la persona que ilumina mis días...</h1>
+        <p>Hay palabras que guardo en el corazón,<br> pero hoy quiero compartirlas contigo.</p>
+        <p>¿Me permites ser sincero?</p>
+        <button onclick="showMessage()">Abrir mi corazón</button>
+    </div>
+
+    <!-- Pantalla 2 - Confesión -->
+    <div class="container hidden" id="secret-message">
+        <h1>Desde que te conocí...</h1>
+        <p>Algo en ti me atrapó: tu risa, tu mirada,<br> esa forma única de hacer que el mundo parezca más brillante.</p>
+        <p>No son solo palabras...<br> Es que <strong>me gustas</strong>, en todos los sentidos.</p>
+        <p>¿Te gustaría compartir un momento especial conmigo?</p>
+        <button onclick="romanticResponse()">❤️ ¡Sí, me encantaría! ❤️</button>
+        <button onclick="shyRomanticResponse()">💭 Dame tiempo para pensarlo...</button>
+        <button class="back-btn" onclick="goBack()">↩️ Volver</button>
+    </div>
+
+    <!-- Pantalla 3 - Respuesta Romántica -->
+    <div class="container hidden" id="romantic-response">
+        <h1>💖 ¡Eres mi sueño hecho realidad! 💖</h1>
+        <p>"El amor no se mira, se siente...<br> y contigo, lo siento todo."</p>
+        <button onclick="openWhatsApp()">📩 Enviar mensaje por WhatsApp</button>
+        <button class="back-btn" onclick="goToPrevious()">↩️ Volver</button>
+    </div>
+
+    <!-- Pantalla 4 - Respuesta Tímida -->
+    <div class="container hidden" id="shy-response">
+        <h1>🌙 Entiendo, pero...</h1>
+        <p>"El amor es paciencia, y yo esperaré<br> porque vales cada segundo."</p>
+        <p>¿Un café tranquilo, sin prisas,<br> solo para conocernos mejor?</p>
+        <button onclick="romanticResponse()">☕ ¡Acepto! </button>
+        <button class="back-btn" onclick="goToPrevious()">↩️ Volver</button>
+    </div>
+
+    <script>
+        // Navegación entre pantallas
+        function showMessage() {
+            document.getElementById('main-message').classList.add('hidden');
+            document.getElementById('secret-message').classList.remove('hidden');
+            createStars();
+        }
+
+        function romanticResponse() {
+            document.getElementById('secret-message').classList.add('hidden');
+            document.getElementById('romantic-response').classList.remove('hidden');
+            createHearts();
+        }
+
+        function shyRomanticResponse() {
+            document.getElementById('secret-message').classList.add('hidden');
+            document.getElementById('shy-response').classList.remove('hidden');
+        }
+
+        function goBack() {
+            document.getElementById('secret-message').classList.add('hidden');
+            document.getElementById('main-message').classList.remove('hidden');
+        }
+
+        function goToPrevious() {
+            document.getElementById('romantic-response').classList.add('hidden');
+            document.getElementById('shy-response').classList.add('hidden');
+            document.getElementById('secret-message').classList.remove('hidden');
+        }
+
+        // Abrir WhatsApp
+        function openWhatsApp() {
+            const message = "¡Hola! Me encantaría compartir un momento especial contigo. 💖";
+            const phoneNumber = "+573124563817"; // Reemplaza con tu número
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Efectos visuales
+        function createHearts() {
+            for (let i = 0; i < 100; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('hearts');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.animationDuration = (Math.random() * 4 + 3) + 's';
+                document.body.appendChild(heart);
+            }
+        }
+
+        function createStars() {
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.classList.add('stars');
+                star.innerHTML = '✨';
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDelay = (Math.random() * 2) + 's';
+                document.body.appendChild(star);
+            }
+        }
+    </script>
+</body>
+</html>
